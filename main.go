@@ -10,5 +10,5 @@ func main() {
 		fmt.Fprintln(w, "hello from a kube")
 	})
 	fmt.Println("Server running port 8080")
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":9090", nil)
 }
