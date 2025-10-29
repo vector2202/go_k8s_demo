@@ -1,0 +1,25 @@
+name: CICD Pipeline
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Build Docker Image
+        run: |
+          docker build -t vector2202/go-service:latest .
+
+      - name: Push Image
+        run: |
+          docker tag vector2202/go-service:latest docker.io/vector2202x3/go-service:latest
+          docker push docker.io/vector2202/go-service:latest
+
+      - name: Deploy to Kind
+        run: |
+          kubectl apply -f k8s/
