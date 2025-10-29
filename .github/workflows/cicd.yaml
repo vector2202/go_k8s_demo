@@ -17,7 +17,7 @@ jobs:
 
       - name: Push Image
         run: |
-          docker tag vector2202/go-service:latest docker.io/vector2202x3/go-service:latest
+          docker tag vector2202/go-service:latest docker.io/vector2202/go-service:latest
           docker push docker.io/vector2202/go-service:latest
 
       - name: Deploy to Kind
